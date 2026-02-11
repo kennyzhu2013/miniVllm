@@ -3,9 +3,9 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "nano-vllm"
-version = "0.2.0"
-authors = [{ name = "Xingkai Yu" }]
+name = "mini-vllm"
+version = "0.1.0"
+authors = [{ name = "Zhu " }]
 license = "MIT"
 license-files = ["LICENSE"]
 readme = "README.md"
@@ -20,8 +20,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage="https://github.com/GeeeekExplorer/nano-vllm"
+Homepage="https://github.com/kennyzhu2013/miniVllm"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["nanovllm*"]
+include = ["minivllm*"]
