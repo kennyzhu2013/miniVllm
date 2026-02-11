@@ -2,8 +2,8 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import torch
-from nanovllm.layers.attention import Attention
-from nanovllm.utils.context import set_context, reset_context
+from minivllm.layers.attention import Attention
+from minivllm.utils.context import set_context, reset_context
 
 
 def test_prefill_dtype_cast():

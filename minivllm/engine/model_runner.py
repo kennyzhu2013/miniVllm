@@ -5,19 +5,19 @@ import torch.distributed as dist
 from multiprocessing.synchronize import Event
 from multiprocessing.shared_memory import SharedMemory
 
-from nanovllm.config import Config
-from nanovllm.engine.sequence import Sequence
-from nanovllm.utils.context import set_context, get_context, reset_context
-from nanovllm.utils.memory import get_gpu_memory
+from minivllm.config import Config
+from minivllm.engine.sequence import Sequence
+from minivllm.utils.context import set_context, get_context, reset_context
+from minivllm.utils.memory import get_gpu_memory
 
 # 延迟导入模型，避免在仅导入包时因外部依赖缺失而失败
 try:
-    from nanovllm.models.qwen3 import Qwen3ForCausalLM  # type: ignore
+    from minivllm.models.qwen3 import Qwen3ForCausalLM  # type: ignore
 except Exception:
     Qwen3ForCausalLM = None  # 在 __init__ 中再尝试加载并提供友好错误提示
 
-from nanovllm.layers.sampler import Sampler
-from nanovllm.utils.loader import load_model
+from minivllm.layers.sampler import Sampler
+from minivllm.utils.loader import load_model
 
 
 # 用于在分布式环境中运行一个语言模型（这里主要针对Qwen3）。
@@ -66,7 +66,7 @@ class ModelRunner:
         global Qwen3ForCausalLM
         if Qwen3ForCausalLM is None:
             try:
-                from nanovllm.models.qwen3 import Qwen3ForCausalLM as _Qwen3ForCausalLM
+                from minivllm.models.qwen3 import Qwen3ForCausalLM as _Qwen3ForCausalLM
                 Qwen3ForCausalLM = _Qwen3ForCausalLM
             except Exception as e:
                 raise ImportError(
@@ -88,11 +88,11 @@ class ModelRunner:
         if self.world_size > 1:
             if rank == 0:
                 # 主进程创建或附加共享内存（SharedMemory）
-                self.shm = SharedMemory(name="nanovllm", create=True, size=2**20)
+                self.shm = SharedMemory(name="minivllm", create=True, size=2**20)
                 dist.barrier()
             else:
                 dist.barrier()
-                self.shm = SharedMemory(name="nanovllm")
+                self.shm = SharedMemory(name="minivllm")
                 self.loop()
 
     def exit(self):

@@ -2,12 +2,12 @@ import torch
 from torch import nn
 import torch.distributed as dist
 
-from nanovllm.layers.activation import SiluAndMul
-from nanovllm.layers.attention import Attention
-from nanovllm.layers.layernorm import RMSNorm
-from nanovllm.layers.linear import QKVParallelLinear, MergedColumnParallelLinear, RowParallelLinear
-from nanovllm.layers.rotary_embedding import get_rope
-from nanovllm.layers.embed_head import VocabParallelEmbedding, ParallelLMHead
+from minivllm.layers.activation import SiluAndMul
+from minivllm.layers.attention import Attention
+from minivllm.layers.layernorm import RMSNorm
+from minivllm.layers.linear import QKVParallelLinear, MergedColumnParallelLinear, RowParallelLinear
+from minivllm.layers.rotary_embedding import get_rope
+from minivllm.layers.embed_head import VocabParallelEmbedding, ParallelLMHead
 
 
 class Qwen3Attention(nn.Module):

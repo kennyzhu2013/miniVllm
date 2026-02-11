@@ -3,7 +3,7 @@ import json
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse
-from nanovllm import LLM, SamplingParams
+from minivllm import LLM, SamplingParams
 from transformers import AutoTokenizer
 
 

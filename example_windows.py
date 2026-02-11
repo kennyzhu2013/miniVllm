@@ -3,7 +3,7 @@ import platform
 import sys
 import time
 import torch
-from nanovllm import LLM, SamplingParams
+from minivllm import LLM, SamplingParams
 from transformers import AutoTokenizer
 
 

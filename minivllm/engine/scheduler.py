@@ -1,8 +1,8 @@
 from collections import deque
 
-from nanovllm.config import Config
-from nanovllm.engine.sequence import Sequence, SequenceStatus
-from nanovllm.engine.block_manager import BlockManager
+from minivllm.config import Config
+from minivllm.engine.sequence import Sequence, SequenceStatus
+from minivllm.engine.block_manager import BlockManager
 
 # 代码实现了一个调度器（Scheduler），用于管理多个序列（Sequence）的推理过程，包括预填充（prefill）和解码（decode）两个阶段。
 # 调度器负责将等待队列中的序列调度到运行队列中，并处理运行中序列的抢占（preemption）和完成（completion）逻辑。

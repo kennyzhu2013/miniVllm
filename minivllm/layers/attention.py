@@ -24,7 +24,7 @@ try:
     _HAS_XFORMERS = True
 except ImportError:
     _HAS_XFORMERS = False
-from nanovllm.utils.context import get_context
+from minivllm.utils.context import get_context
 
 # 支持 HAS_TRITON 时，这段的区别几乎都体现在 “把 (key,value) 写入 KVCache 的实现方式” 上：
 # 同样的逻辑（按 slot_mapping 把每个 token 的 K/V 写到 KVCache 的对应槽位），Triton 路径用自定义 GPU kernel，回退路径用 PyTorch 的张量操作。
